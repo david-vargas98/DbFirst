@@ -6,20 +6,20 @@ using System.Threading.Tasks;
 
 namespace DbFirst
 {
+    public enum Level
+    {
+        Begginer = 1,
+        Intermideate = 2,
+        Advanced = 3
+    }
+
     internal class Program
     {
         static void Main(string[] args)
         {
-            var dbContext =  new PlutoDbContext();
-
-            //dbContext.funcGetAuthorCourses(1); // This doesn't follow C# conventions
-            dbContext.GetAuthorCourses(1); // This follows C# conventions, much better
-            var courses = dbContext.GetCourses();
-
-            foreach (var course in courses)
-            {
-                Console.WriteLine($"Course: {course.Title}");
-            }
+            var course = new Course();
+            //course.Level = CourseLevel.Begginer; // enum from our data model: much better than using a magic number
+            course.Level = Level.Begginer; // enum we created ourselves which is referenced to the data model enum
         }
     }
 }
